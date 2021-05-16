@@ -1,18 +1,12 @@
 <template>
   <div>
-      <alert />
+    
   </div>
 </template>
 
 <script>
-import Alert from '../components/Alert.vue';
-
-export default {
-  components: { Alert },
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>
