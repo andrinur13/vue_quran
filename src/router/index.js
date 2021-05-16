@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import QuranSurah from '../views/QuranSurah.vue'
+import QuranHome from '../views/QuranHome.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Quran Home',
+    component: QuranHome
   },
   {
     path: '/about',
@@ -17,6 +18,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/surah/:id',
+    name: 'Surah',
+    component: QuranSurah
   }
 ]
 

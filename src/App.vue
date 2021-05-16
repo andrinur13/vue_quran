@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <quran />
+    <router-view>
+      <quran />
+    </router-view>
   </div>
 </template>
 
