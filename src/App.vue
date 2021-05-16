@@ -5,9 +5,11 @@
 </template>
 
 <script>
-import Quran from "./views/Quran.vue";
+import Quran from "./views/QuranHome.vue";
 export default {
   components: { Quran },
+
+  mounted() {}
 };
 </script>
 
