@@ -1,33 +1,41 @@
 <template>
-  <div class="container">
-    <div>
-      {{ surahDetail.name.transliteration.en }}
+  <div>
+    <div class="text-center my-4">
+      <div class="card">
+        <div class="card-body">
+          {{ surahDetail.name.transliteration.en }}
+        </div>
+      </div>
     </div>
-    <div>
-      <div
-        class="row"
-        v-for="srh in surahDetail.verses"
-        :key="srh.number.inSurah"
-      >
-        <div class="col-2">{{ srh.number.inSurah }}</div>
-        <div class="col">
-          <div class="arabic-text m-1">
-            <p>{{ srh.text.arab }}</p>
+    <div class="container">
+      <div>
+        <div
+          class="row"
+          v-for="srh in surahDetail.verses"
+          :key="srh.number.inSurah"
+        >
+          <div class="col-2 btn btn-success numberOfAyat">
+            {{ srh.number.inSurah }}
           </div>
+          <div class="col">
+            <div class="arabic-text m-1">
+              <small>{{ srh.text.arab }}</small>
+            </div>
+          </div>
+          <div class="translate mt-1">
+            <div class="ejaan m-1">
+              <small>
+                {{ srh.text.transliteration.en }}
+              </small>
+            </div>
+            <div class="indonesia m-1">
+              <small>
+                {{ srh.translation.id }}
+              </small>
+            </div>
+          </div>
+          <hr />
         </div>
-        <div class="translate mt-1">
-          <div class="ejaan m-1">
-            <small>
-              {{srh.text.transliteration.en}}
-            </small>
-          </div>
-          <div class="indonesia m-1">
-            <small>
-              {{ srh.translation.id }}
-            </small>
-          </div>
-        </div>
-        <hr />
       </div>
     </div>
   </div>
@@ -43,13 +51,15 @@ export default {
   },
 
   mounted() {
-    axios.get("https://api.quran.sutanlab.id/surah/" + this.$route.params.id).then((resp) => {
-      if (resp.status === 200) {
-        this.surahDetail = resp.data.data;
-      } else {
-        console.log("gagal fetch surah");
-      }
-    });
+    axios
+      .get("https://api.quran.sutanlab.id/surah/" + this.$route.params.id)
+      .then((resp) => {
+        if (resp.status === 200) {
+          this.surahDetail = resp.data.data;
+        } else {
+          console.log("gagal fetch surah");
+        }
+      });
   },
 };
 </script>
@@ -69,5 +79,10 @@ export default {
 
 .ejaan {
   font-style: italic;
+}
+
+.numberOfAyat {
+  height: fit-content;
+  width: fit-content;
 }
 </style>

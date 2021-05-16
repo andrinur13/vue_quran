@@ -23,6 +23,10 @@ const routes = [
     path: '/surah/:id',
     name: 'Surah',
     component: QuranSurah
+  },
+  {
+    path: '*',
+    component: QuranHome,
   }
 ]
 
